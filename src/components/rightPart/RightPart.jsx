@@ -18,7 +18,7 @@ function RightPart() {
       </div>
       <div className='border-t border-gray-200 w-full my-4' />
       {/* chart */}
-      <div className='w-full items-start justify-start flex flex-col px-12 py-2 '>
+      <div className='w-full'>
         <Chart />
       </div>
       {/* bottom part */}
