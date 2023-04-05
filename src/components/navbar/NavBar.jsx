@@ -34,7 +34,7 @@ function NavBar() {
         <img
           src={avatar}
           alt='profile image'
-          className='rounded-full w-8 h-8'
+          className='rounded-full md:rounded-full w-8 h-8'
         />
         <h3 className='text-sm font-semibold text-gray-600'>
           Blessing Daniels

@@ -18,7 +18,7 @@ function LocationItem({ item }) {
   }, [country]);
 
   return (
-    <div className='w-full py-2 px-2 items-center justify-between flex'>
+    <div className='w-full py-2 items-center justify-between flex'>
       {/* icon + text */}
       <div className='flex items-center justify-center space-x-4 w-full  '>
         <div className='bg-[#DBEEF4] rounded-full py-2 px-2'>

@@ -7,6 +7,7 @@ import LocationItem from './LocationItem';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import ReferralItem from './ReferralItem';
+import PieChart from './chart/PieChart';
 
 function RightPart() {
   const [data, setData] = useState([]);
@@ -40,28 +41,40 @@ function RightPart() {
       </div>
       {/* bottom part */}
       <div className='w-full justify-between flex flex-col md:flex-row py-6 px-12'>
-        <div className='py-5'>
-          <h1 className='text-xl font-bold xl:text-3xl py-4 '>
-            {' '}
-            Top locations{' '}
-          </h1>
-          <div className='flex flex-col items-center justify-center space-x-6 overflow-x-auto w-full py-4 '>
-            {data &&
-              data?.top_locations?.map((item) => (
-                <LocationItem item={item} key={item.id} />
-              ))}
+        <div className='py-5 flex items-center justify-center'>
+          <div>
+            <h1 className='text-xl font-bold xl:text-3xl '> Top locations </h1>
+            <div className='flex flex-col items-center justify-center overflow-x-auto w-full py-4 '>
+              {data &&
+                data?.top_locations?.map((item) => (
+                  <LocationItem item={item} key={item.id} />
+                ))}
+            </div>
+          </div>
+          <div className='hidden md:flex'>
+            <PieChart
+              data={data && data?.top_locations}
+              title='Location'
+              isLocation={true}
+            />
           </div>
         </div>
-        <div className='py-5'>
-          <h1 className='text-xl font-bold xl:text-2xl py-4 '>
-            {' '}
-            Top Referral Source{' '}
-          </h1>
-          <div className='flex flex-col items-center justify-center space-x-6 overflow-x-auto w-full py-4 '>
-            {data &&
-              data?.top_sources?.map((item) => (
-                <ReferralItem item={item} key={item.id} />
-              ))}
+        <div className='py-5 flex items-center justify-center'>
+          <div>
+            <h1 className='text-xl font-bold xl:text-3xl '> Top sources </h1>
+            <div className='flex flex-col items-center justify-center overflow-x-auto w-full py-4 '>
+              {data &&
+                data?.top_sources?.map((item) => (
+                  <ReferralItem item={item} key={item.id} />
+                ))}
+            </div>
+          </div>
+          <div className='hidden md:flex'>
+            <PieChart
+              data={data && data?.top_locations}
+              title='Source'
+              isLocation={true}
+            />
           </div>
         </div>
       </div>
