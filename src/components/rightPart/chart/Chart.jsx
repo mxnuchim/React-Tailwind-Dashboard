@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 const apiUrl = 'https://fe-task-api.mainstack.io/';
 
 const Chart = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(undefined);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,6 +47,14 @@ const Chart = () => {
         type: 'category',
         boundaryGap: false,
         data: data && Object.keys(data?.graph_data?.views),
+        axisLabel: {
+          formatter: function (value) {
+            const date = new Date(value);
+            const day = date.getDate();
+            const month = date.toLocaleString('default', { month: 'short' });
+            return `${day} ${month}`;
+          },
+        },
       },
     ],
     yAxis: {
@@ -83,7 +91,21 @@ const Chart = () => {
     ],
   };
 
-  return <ReactECharts option={option} />;
+  return (
+    <>
+      <div className='flex flex-col gap-2'>
+        <h1 className='font-semibold text-xs'>Page Views</h1>
+        <h1 className='font-bold text-4xl'>
+          {data &&
+            Object.values(data?.graph_data?.views).reduce(
+              (sum, value) => sum + value,
+              0
+            )}
+        </h1>
+      </div>
+      <ReactECharts option={option} />
+    </>
+  );
 };
 
 export default Chart;

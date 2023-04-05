@@ -2,11 +2,28 @@ import { CashIcon, CreditCardIcon } from '@heroicons/react/outline';
 import React from 'react';
 import Chart from './chart/Chart';
 import { InvestDB } from './utils/InvestmentsDB';
-import InvestItem from './InvestItem';
+import LocationItem from './LocationItem';
+
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import ReferralItem from './ReferralItem';
 
 function RightPart() {
+  const [data, setData] = useState([]);
+
+  const apiUrl = 'https://fe-task-api.mainstack.io/';
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get(apiUrl);
+      console.log(response.data);
+      setData(response.data);
+    };
+    fetchData();
+  }, []);
+
   return (
-    <div className='col-span-3  flex flex-col w-full px-20'>
+    <div className='col-span-3  flex flex-col w-full px-3 md:px-20'>
       {/* top section */}
       <div className='flex flex-col items-start justify-start'>
         <h2 className='text-lg font-bold leading-8'>
@@ -22,27 +39,29 @@ function RightPart() {
         <Chart />
       </div>
       {/* bottom part */}
-      <div className='w-full items-center justify-between flex py-6'>
-        <div className='w-[40%] py-5'>
+      <div className='w-full justify-between flex flex-col md:flex-row py-6 px-12'>
+        <div className='py-5'>
           <h1 className='text-xl font-bold xl:text-3xl py-4 '>
             {' '}
             Top locations{' '}
           </h1>
           <div className='flex flex-col items-center justify-center space-x-6 overflow-x-auto w-full py-4 '>
-            {InvestDB.map((item) => (
-              <InvestItem item={item} key={item.id} />
-            ))}
+            {data &&
+              data?.top_locations?.map((item) => (
+                <LocationItem item={item} key={item.id} />
+              ))}
           </div>
         </div>
-        <div className='w-[40%] py-5'>
+        <div className='py-5'>
           <h1 className='text-xl font-bold xl:text-2xl py-4 '>
             {' '}
             Top Referral Source{' '}
           </h1>
           <div className='flex flex-col items-center justify-center space-x-6 overflow-x-auto w-full py-4 '>
-            {InvestDB.map((item) => (
-              <InvestItem item={item} key={item.id} />
-            ))}
+            {data &&
+              data?.top_sources?.map((item) => (
+                <ReferralItem item={item} key={item.id} />
+              ))}
           </div>
         </div>
       </div>
