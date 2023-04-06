@@ -22,7 +22,7 @@ function RightPart() {
   }, []);
 
   return (
-    <div className='col-span-3  flex flex-col w-full px-3 md:px-20'>
+    <div className='col-span-3 flex flex-col w-full px-3 md:px-20'>
       {/* top section */}
       <div className='flex flex-col items-start justify-start'>
         <h2 className='text-lg font-bold leading-8'>
