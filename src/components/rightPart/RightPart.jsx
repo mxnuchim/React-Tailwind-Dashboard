@@ -1,7 +1,6 @@
 import { CashIcon, CreditCardIcon } from '@heroicons/react/outline';
 import React from 'react';
 import Chart from './chart/Chart';
-import { InvestDB } from './utils/InvestmentsDB';
 import LocationItem from './LocationItem';
 
 import axios from 'axios';
