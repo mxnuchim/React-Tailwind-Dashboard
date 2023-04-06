@@ -1,4 +1,3 @@
-import { CashIcon, CreditCardIcon } from '@heroicons/react/outline';
 import React from 'react';
 import Chart from './chart/Chart';
 import LocationItem from './LocationItem';
@@ -27,7 +26,7 @@ function RightPart() {
       {/* top section */}
       <div className='flex flex-col items-start justify-start'>
         <h2 className='text-lg font-bold leading-8'>
-          Good morning, Blessing 🌥️
+          Good morning, Manuchim 🌥️
         </h2>
         <h3 className='text-sm text-gray-600 leading-0'>
           Check out your dashboard summary
@@ -39,8 +38,8 @@ function RightPart() {
         <Chart />
       </div>
       {/* bottom part */}
-      <div className='w-full justify-between flex flex-col md:flex-row py-6 px-12'>
-        <div className='py-5 flex items-center justify-center'>
+      <div className='w-full justify-between items-start flex flex-col md:flex-row py-6 px-12'>
+        <div className='py-5 flex items-center justify-center gap-5'>
           <div>
             <h1 className='text-xl font-bold xl:text-3xl '> Top locations </h1>
             <div className='flex flex-col items-center justify-center overflow-x-auto w-full py-4 '>
@@ -58,7 +57,7 @@ function RightPart() {
             />
           </div>
         </div>
-        <div className='py-5 flex items-center justify-center'>
+        <div className='py-5 flex items-center justify-center gap-5'>
           <div>
             <h1 className='text-xl font-bold xl:text-3xl '> Top sources </h1>
             <div className='flex flex-col items-center justify-center overflow-x-auto w-full py-4 '>
