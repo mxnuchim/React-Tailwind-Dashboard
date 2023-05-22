@@ -17,7 +17,7 @@ pipeline {
 
         stage('Install dependencies') {
           steps {
-            sh 'cd React-Tailwind-Dashboard && npm i'
+            sh 'npm i'
           }
         }
 
