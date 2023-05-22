@@ -8,19 +8,14 @@ pipeline {
     }
 
     stage('Added Log') {
-      parallel {
-        stage('Added Log') {
-          steps {
-            sh 'ls -a'
-          }
-        }
+      steps {
+        sh 'ls -a'
+      }
+    }
 
-        stage('Install dependencies') {
-          steps {
-            sh 'npm i'
-          }
-        }
-
+    stage('install deps') {
+      steps {
+        sh 'npm i'
       }
     }
 
