@@ -8,8 +8,19 @@ pipeline {
     }
 
     stage('Added Log') {
-      steps {
-        sh 'ls -a'
+      parallel {
+        stage('Added Log') {
+          steps {
+            sh 'ls -a'
+          }
+        }
+
+        stage('Install dependencies') {
+          steps {
+            sh 'cd React-Tailwind-Dashboard && npm i'
+          }
+        }
+
       }
     }
 
