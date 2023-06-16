@@ -1,4 +1,4 @@
-const sampleData = {
+export const sampleData = {
   graph_data: {
     views: {
       '2022-07-31': 1,
